@@ -29,12 +29,17 @@ SerialObj.stopbits = 1     # Number of Stop bits = 1
 
 print(SerialObj)
 
-BytesWritten = SerialObj.write(b'50')
+BytesWritten = SerialObj.write(b'100')
 
 #Convert String to Byte format
-text = 'H'
-text = bytearray(text,'utf8')
 
-SerialObj.write(text)
+num = 255
+num1 = 10
+# integer to bytes
+num_bytes = num.to_bytes(1, byteorder='little')
+num_bytes1 = num1.to_bytes(1, byteorder='big')
+SerialObj.write(num_bytes)
+#SerialObj.write(num_bytes1)
+print(num_bytes)
 
-SerialObj.close()
+#SerialObj.close()
